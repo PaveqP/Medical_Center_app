@@ -1,0 +1,54 @@
+.doctor-login {
+    height: calc(100% - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__container {
+        display: flex;
+        background-color: var(--font_color);
+        padding: 20px 40px;
+        border-radius: 10px;
+    }
+}
+
+.doctor-login__separator{
+    margin: 0px 20px;
+    height: 340px;
+    width: 4px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.image__auth-image {
+    width: 600px;
+}
+
+.doctor-login__form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.inputs__group{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form {
+    &__inputs{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

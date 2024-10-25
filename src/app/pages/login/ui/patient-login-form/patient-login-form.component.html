@@ -1,0 +1,23 @@
+<section class="patient-login">
+    <div class="patient-login__container">
+        <div class="patient-login__image">
+            <img class="image__auth-image image" src="/assets/patient_auth.png" alt="">
+        </div>
+        <div class="patient-login__separator"></div>
+        <form action="" class="patient-login__form" [formGroup]="loginForm">
+            <div class="form__inputs">
+                <div class="inputs__group">
+                    <label for="email">Введите email</label>
+                    <input class="base-input" formControlName="email" type="email" name="email" placeholder="email">
+                </div>
+                <div class="inputs__group">
+                    <label for="password">Введите пароль</label>
+                    <input class="base-input" formControlName="password" type="password" name="password" placeholder="пароль">
+                </div>
+            </div>
+            <div class="form__actions">
+                <button class="base-button" type="submit" (click)="login()"> Войти </button>
+            </div>
+        </form>
+    </div>
+</section>
