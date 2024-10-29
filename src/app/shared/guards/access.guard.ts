@@ -1,14 +1,30 @@
 import { inject } from '@angular/core';
-import { LoginApiService } from '../../pages/login/services/login-api.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app.state';
+import { selectUserRole } from '../../store/user/user.selectors';
+import { map } from 'rxjs';
 
-export const canActivateAuth = () => {
-  const isLoggedIn = inject(LoginApiService).isAuth;
+export const canActivateHome = () => {
+  const store = inject(Store<AppState>);
   const router = inject(Router);
 
-  if (isLoggedIn) {
-    return true;
-  }
+  return store.select(selectUserRole).pipe(
+    map((role) => {
+      if (role === 'patient') return true;
+      return router.createUrlTree(['/login']);
+    })
+  );
+};
 
-  return router.createUrlTree(['/login']);
+export const canActivateStuff = () => {
+  const store = inject(Store<AppState>);
+  const router = inject(Router);
+
+  return store.select(selectUserRole).pipe(
+    map((role) => {
+      if (role === 'doctor') return true;
+      return router.createUrlTree(['/login']);
+    })
+  );
 };

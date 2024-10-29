@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { canActivateAuth } from './shared/guards/access.guard';
+import {
+  canActivateHome,
+  canActivateStuff,
+} from './shared/guards/access.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +17,15 @@ const routes: Routes = [
       import('../app/pages/patient-home/patient-home.module').then(
         (m) => m.PatientHomeModule
       ),
-    canActivate: [canActivateAuth],
+    canActivate: [canActivateHome],
+  },
+  {
+    path: 'stuff',
+    loadChildren: () =>
+      import('../app/pages/stuff-home/stuff-home.module').then(
+        (m) => m.StuffHomeModule
+      ),
+    canActivate: [canActivateStuff],
   },
 ];
 

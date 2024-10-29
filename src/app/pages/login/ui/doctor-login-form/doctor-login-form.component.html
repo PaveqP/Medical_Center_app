@@ -4,19 +4,19 @@
             <img class="image__auth-image image" src="/assets/patient_auth.png" alt="">
         </div>
         <div class="doctor-login__separator"></div>
-        <form action="" class="doctor-login__form">
+        <form action="" class="doctor-login__form" [formGroup]="doctorLoginForm">
             <div class="form__inputs">
                 <div class="inputs__group">
                     <label for="email">Введите email</label>
-                    <input class="base-input" type="email" name="email" id="" placeholder="email">
+                    <input class="base-input" type="email" name="email" placeholder="email" formControlName="email">
                 </div>
                 <div class="inputs__group">
                     <label for="password">Введите пароль</label>
-                    <input class="base-input" type="password" name="password" id="" placeholder="пароль">
+                    <input class="base-input" type="password" name="password" placeholder="пароль" formControlName="password">
                 </div>
             </div>
             <div class="form__actions">
-                <button class="base-button" type="submit"> Войти </button>
+                <button class="base-button" type="submit" (click)="login()"> Войти </button>
             </div>
         </form>
     </div>

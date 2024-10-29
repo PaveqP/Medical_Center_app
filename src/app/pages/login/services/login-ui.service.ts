@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginApiService } from './login-api.service';
+import { AuthRequestType } from '../data/auth.types';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,11 @@ import { LoginApiService } from './login-api.service';
 export class LoginUiService {
   constructor(private readonly apiService: LoginApiService) {}
 
-  patientLogin(data: { email: string; password: string }) {
+  patientLogin(data: AuthRequestType) {
     return this.apiService.patientLogin(data);
+  }
+
+  doctorLogin(data: AuthRequestType) {
+    return this.apiService.doctorLogin(data);
   }
 }

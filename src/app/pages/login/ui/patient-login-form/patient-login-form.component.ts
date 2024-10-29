@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginUiService } from '../../services/login-ui.service';
+import { AuthRequestType } from '../../data/auth.types';
 
 @Component({
   selector: 'app-patient-login-form',
@@ -21,9 +22,7 @@ export class PatientLoginFormComponent {
   login() {
     if (this.loginForm.valid) {
       this.uiService
-        .patientLogin(
-          this.loginForm.value as { email: string; password: string }
-        )
+        .patientLogin(this.loginForm.value as AuthRequestType)
         .subscribe((resp) => {
           console.log('resp', resp);
         });
