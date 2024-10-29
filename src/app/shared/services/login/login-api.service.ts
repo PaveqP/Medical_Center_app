@@ -2,13 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthRequestType, AuthResponse } from '../data/auth.types';
+import { AuthRequestType, AuthResponse } from '../../data/auth.types';
 import { catchError, of, switchMap, tap, throwError } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/app.state';
 import { loginDoctor, loginPatient } from '../../../store/user/user.actions';
 import { Doctor, Patient } from '../../../store/user/user.model';
-import { selectUser } from '../../../store/user/user.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +23,13 @@ export class LoginApiService {
     private readonly cookieService: CookieService,
     private store: Store<AppState>
   ) {}
+
+  get isUserAuth() {
+    if (!this.access_token) {
+      this.access_token = this.cookieService.get('access_token');
+    }
+    return this.access_token;
+  }
 
   patientLogin(data: AuthRequestType) {
     return this.httpClient

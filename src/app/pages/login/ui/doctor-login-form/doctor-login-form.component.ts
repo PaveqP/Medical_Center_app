@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginUiService } from '../../services/login-ui.service';
-import { AuthRequestType } from '../../data/auth.types';
+import { LoginUiService } from '../../../../shared/services/login/login-ui.service';
+import { AuthRequestType } from '../../../../shared/data/auth.types';
 
 @Component({
   selector: 'app-doctor-login-form',

@@ -5,6 +5,7 @@ import { PatientLoginFormComponent } from './ui/patient-login-form/patient-login
 import { DoctorLoginFormComponent } from './ui/doctor-login-form/doctor-login-form.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginHeaderComponent } from '../../shared/components/login-header/login-header.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PatientLoginFormComponent,
     DoctorLoginFormComponent,
   ],
-  imports: [CommonModule, LoginRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    CommonModule,
+    LoginRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    LoginHeaderComponent,
+  ],
 })
 export class LoginModule {}

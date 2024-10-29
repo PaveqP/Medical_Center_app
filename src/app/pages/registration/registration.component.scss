@@ -1,4 +1,4 @@
-.patient-login {
+.registration {
     height: calc(100% - 50px);
     display: flex;
     align-items: center;
@@ -6,13 +6,13 @@
 
     &__container {
         display: flex;
-        background-color: var(--primary_green);
+        background-color: var(--font_color);
         padding: 20px 40px;
         border-radius: 10px;
     }
 }
 
-.patient-login__separator{
+.registration__separator{
     margin: 0px 20px;
     height: 340px;
     width: 4px;
@@ -24,7 +24,7 @@
     width: 600px;
 }
 
-.patient-login__form {
+.registration__form {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -47,9 +47,13 @@
     }
 
     &__actions {
+        padding-top: 20px;
         display: flex;
         gap: 8px;
         flex-direction: column;
-    }
 
+        p{
+            color: gray;
+        }
+    }
 }

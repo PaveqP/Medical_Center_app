@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginUiService } from '../../services/login-ui.service';
-import { AuthRequestType } from '../../data/auth.types';
+import { LoginUiService } from '../../../../shared/services/login/login-ui.service';
+import { AuthRequestType } from '../../../../shared/data/auth.types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-login-form',
@@ -17,7 +18,10 @@ export class PatientLoginFormComponent {
     ]),
   });
 
-  constructor(private readonly uiService: LoginUiService) {}
+  constructor(
+    private readonly uiService: LoginUiService,
+    private readonly router: Router
+  ) {}
 
   login() {
     if (this.loginForm.valid) {
@@ -29,5 +33,9 @@ export class PatientLoginFormComponent {
     } else {
       alert('fucking errors');
     }
+  }
+
+  registration() {
+    this.router.navigate(['registration']);
   }
 }
