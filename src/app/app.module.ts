@@ -11,6 +11,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { userReducer } from './store/user/user.reducer';
+import { registerLocaleData } from '@angular/common';
+import ru from '@angular/common/locales/ru';
+import { FormsModule } from '@angular/forms';
+
+registerLocaleData(ru);
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,8 +26,9 @@ import { userReducer } from './store/user/user.reducer';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forRoot({ user: userReducer }),
+    FormsModule,
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi())],
+  providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

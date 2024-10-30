@@ -6,6 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: PatientHomeComponent,
+    children: [
+      {
+        path: 'doctor',
+        loadChildren: () =>
+          import('../select-doctor/select-doctor.module').then(
+            (m) => m.SelectDoctorModule
+          ),
+      },
+    ],
   },
 ];
 

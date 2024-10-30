@@ -1,0 +1,13 @@
+.appointment {
+
+    &__actions{
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.appointment__specializations {
+    display: flex;
+    gap: 10px;
+}

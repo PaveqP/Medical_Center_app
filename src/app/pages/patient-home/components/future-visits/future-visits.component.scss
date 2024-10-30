@@ -1,0 +1,14 @@
+.future-visits {
+
+    &__actions{
+        margin-top: 15px;
+        display: flex;
+        justify-content: flex-end   ;
+
+    }
+}
+
+.future-visits__visits {
+    display: flex;
+    gap: 10px;
+}
