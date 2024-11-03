@@ -14,8 +14,8 @@ import { Doctor, Patient } from '../../../store/user/user.model';
 })
 export class LoginApiService {
   private readonly baseApiUrl = 'http://localhost:8080/api/';
-  protected access_token: string | null = null;
-  protected refresh_token: string | null = null;
+  access_token: string | null = null;
+  refresh_token: string | null = null;
 
   constructor(
     private readonly router: Router,
@@ -75,7 +75,7 @@ export class LoginApiService {
 
   private fetchPatientData() {
     return this.httpClient
-      .get<Patient>(`${this.baseApiUrl}patient`, {
+      .get<Patient>(`${this.baseApiUrl}patient/profile`, {
         headers: { Authorization: `bearer ${this.access_token}` },
       })
       .pipe(
@@ -91,7 +91,7 @@ export class LoginApiService {
 
   private fetchDoctorData() {
     return this.httpClient
-      .get<Doctor>(`${this.baseApiUrl}doctor`, {
+      .get<Doctor>(`${this.baseApiUrl}doctors/profile`, {
         headers: { Authorization: `bearer ${this.access_token}` },
       })
       .pipe(
@@ -109,6 +109,7 @@ export class LoginApiService {
     this.access_token = res.accessToken;
     this.refresh_token = res.refreshToken;
 
+    this.cookieService.deleteAll();
     this.cookieService.set('access_token', this.access_token);
     this.cookieService.set('refresh_token', this.refresh_token);
     this.cookieService.set('current_role', role);

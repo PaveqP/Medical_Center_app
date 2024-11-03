@@ -1,9 +1,9 @@
 <section class="appointment">
     <h1 class="appointment__title base-title">Записаться к врачу</h1>
     <div class="appointment__specializations">
-        @for (card of displayedCards; track card) {
-            <nz-card style="width:300px;" [nzTitle]="card" (click)="selectSpecialization(card)">
-                <p>Card content</p>
+        @for (card of displayedCards; track card.id) {
+            <nz-card style="width:300px;" [nzTitle]="card.name" (click)="selectSpecialization(card)" class="base-card">
+                <p>{{card.id}}</p>
                 <p>Card content</p>
                 <p>Card content</p>
             </nz-card>
@@ -13,11 +13,11 @@
         @if(selected_specialization){
             <button class="base-button" routerLink="doctor">Записаться: {{selected_specialization}}</button>
         } @else {
-            <button class="base-button">Записаться</button>
+            <button class="base-button" disabled>Записаться</button>
         }
         <nz-pagination 
             [(nzPageIndex)]="currentPage" 
-            [nzTotal]="specializations.length"
+            [nzTotal]="(specializations$ | async)?.length"
             [nzPageSize]="pageSize"
             (nzPageIndexChange)="onPageChange($event)"
         ></nz-pagination>

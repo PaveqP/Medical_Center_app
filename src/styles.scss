@@ -18,18 +18,32 @@
     color: white;
 }
 
-.base-title{
-    font-size: 28px;
-    line-height: 36px;
-    font-weight: 500;
-}
-
 .base-button:hover{
     scale: 1.02;
     transition: 0.3s;
 }
 
 .base-button:not(:hover){
+    scale: 1;
+    transition: 0.3s;
+}
+
+.base-title{
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 500;
+}
+
+.base-card{
+    cursor: pointer;
+}
+
+.base-card:hover{
+    scale: 1.02;
+    transition: 0.3s;
+}
+
+.base-card:not(:hover){
     scale: 1;
     transition: 0.3s;
 }

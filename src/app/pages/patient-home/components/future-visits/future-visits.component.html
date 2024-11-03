@@ -2,7 +2,7 @@
     <h1 class="future-visits__title base-title">Предстоящие визиты</h1>
     <div class="future-visits__visits">
         @for (card of displayedCards; track card) {
-            <nz-card style="width:300px;" [nzTitle]="card" (click)="selectSpecialization(card)">
+            <nz-card style="width:300px;" [nzTitle]="card" (click)="selectSpecialization(card)" class="base-card">
                 <p>Card content</p>
                 <p>Card content</p>
                 <p>Card content</p>

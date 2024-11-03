@@ -1,1 +1,17 @@
-<p>select-doctor works!</p>
+<app-auth-header></app-auth-header>
+<section class="select-doctor">
+    <div class="select-doctor__container">
+        <div class="select-doctor__doctors-list">
+            @for(doctor of doctorsList; track doctor.id){
+                <nz-card style="width:300px;" [nzTitle]="doctor.name" class="base-card">
+                    <p>{{doctor.name}}</p>
+                    <p>{{doctor.email}}</p>
+                    <p>{{doctor.rating}}</p>
+                </nz-card>
+            }
+        </div>
+    </div>
+    
+    <button routerLink="date" class="base-button">Выбрать</button>
+</section>
+

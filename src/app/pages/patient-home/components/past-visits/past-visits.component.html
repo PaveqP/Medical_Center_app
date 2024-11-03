@@ -1,8 +1,8 @@
 <section class="past-visits">
-    <h1 class="past-visits__title base-title">Предстоящие визиты</h1>
+    <h1 class="past-visits__title base-title">Последние визиты</h1>
     <div class="past-visits__visits">
         @for (card of displayedCards; track card) {
-            <nz-card style="width:300px;" [nzTitle]="card" (click)="selectSpecialization(card)">
+            <nz-card style="width:300px;" [nzTitle]="card" (click)="selectSpecialization(card)" class="base-card">
                 <p>Card content</p>
                 <p>Card content</p>
                 <p>Card content</p>

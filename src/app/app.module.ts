@@ -14,6 +14,7 @@ import { userReducer } from './store/user/user.reducer';
 import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
 import { FormsModule } from '@angular/forms';
+import { applicationReducer } from './store/application/application.reducer';
 
 registerLocaleData(ru);
 
@@ -25,7 +26,7 @@ registerLocaleData(ru);
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forRoot({ user: userReducer }),
+    StoreModule.forRoot({ user: userReducer, application: applicationReducer }),
     FormsModule,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient()],
