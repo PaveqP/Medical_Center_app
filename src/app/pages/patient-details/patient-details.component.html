@@ -1,0 +1,20 @@
+<app-auth-header></app-auth-header>
+<section class="patient-details">
+    <h1 class="base-header mb30">
+        Детали записи
+    </h1>
+    <div class="patient-details__detail-card">
+        <div class="detail-card__resume">
+            <p>ФИО пациента: {{userData?.surname}} {{userData?.name}} {{userData?.middle_name}}</p>
+            <p>Направление: {{specialization?.name}}</p>
+            <p>Врач: {{doctor?.surname}} {{doctor?.name}} {{doctor?.middle_name}}</p>
+            <p>Дата: {{date}}</p>
+            <p>Время: {{time}}</p>
+        </div>
+        <div class="vertical-separator"></div>
+        <div class="detail-card__reason">
+            <textarea name="reason" id="0"></textarea>
+        </div>
+    </div>
+    <button class="base-button" (click)="publishConsultation()">Записаться</button>
+</section>

@@ -7,6 +7,13 @@ const routes: Routes = [
     path: '',
     component: SelectDateComponent,
   },
+  {
+    path: 'details',
+    loadChildren: () =>
+      import('../patient-details/patient-details.module').then(
+        (m) => m.PatientDetailsModule
+      ),
+  },
 ];
 
 @NgModule({

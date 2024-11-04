@@ -16,7 +16,6 @@ export class DateApiService {
     private readonly cookieService: CookieService
   ) {
     this.access_token = this.cookieService.get('access_token');
-    console.log(this.access_token);
   }
 
   getDoctorTimeTable(id: number) {

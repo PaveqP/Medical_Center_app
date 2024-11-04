@@ -1,11 +1,28 @@
 <section class="date-modal">
+    Выберите время
     <div class="date-modal__container" *ngIf="timeSlots.length > 0">
-        @for(timeSlot of timeSlots; track (timeSlot.id + timeSlot.id_patient + timeSlot.Id_doctor + 32)){
+        @for(timeSlot of timeSlots; track getRandom()){
             @if(timeSlot.id !== 0){
                 <p class="date-modal__private-slot">{{timeSlot.time}}</p>
             }@else {
-                <button class="date-modal__button">{{timeSlot.time}}:  Записаться</button>
+                <button 
+                    [class]="selectedTimeSlot === timeSlot.time ? 'date-modal__button-active' : 'date-modal__button'" 
+                    (click)="selectTimeSlot(timeSlot.time, timeSlot.date)"
+                    >
+                    {{timeSlot.time}}:  Записаться
+                </button>
             }
         }
+    </div>
+    <div class="date-modal__actions">
+        <button nz-button nzType="default" (click)="closeModal()">Закрыть</button>
+        <button 
+            nz-button nzType="primary" 
+            [disabled]="!selectedTimeSlot" 
+            (click)="complete()"
+            routerLink="details"
+        >
+            Подтвердить запись {{selectedTimeSlot}}
+        </button>
     </div>
 </section>

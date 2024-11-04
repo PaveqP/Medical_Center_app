@@ -14,4 +14,16 @@
     &__button{
         padding: 5px;
     }
+
+    &__button-active{
+        padding: 5px;
+        background-color: lightgreen;
+    }
+
+    &__actions{
+        justify-content: end;
+        margin-top: 30px;
+        display: flex;
+        gap: 10px;
+    }
 }

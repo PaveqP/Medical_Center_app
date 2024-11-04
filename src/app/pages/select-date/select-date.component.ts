@@ -11,6 +11,7 @@ export type Day = {
   dayOfWeek: string;
   id?: number;
   day?: string;
+  fulldate: string;
   start_time?: string;
   end_time?: string;
   time?: IConsultation[];
@@ -56,7 +57,13 @@ export class SelectDateComponent {
       );
       const dayOfWeek = date.toLocaleDateString('ru-RU', { weekday: 'long' });
 
-      this.days.push({ date: day, dayOfWeek });
+      this.days.push({
+        date: day,
+        dayOfWeek,
+        fulldate: `${this.currentYear}-${(this.currentMonth as number) + 1}-${
+          day < 10 ? '0' + day : day
+        }`,
+      });
     }
   }
 

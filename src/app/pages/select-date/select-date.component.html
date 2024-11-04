@@ -1,4 +1,8 @@
+<app-auth-header></app-auth-header>
 <section class="select-date">
+    <nav>
+        <h1 class="base-header mb30">Выберите дату и время для записи:</h1>
+    </nav>
     <div class="select-date__calendar">
         @for(day of days; track day){            
             @if(findDayData(day)){
@@ -11,11 +15,11 @@
                 >
                     <p>{{day.dayOfWeek}}</p>
                     <p>{{day.start_time}} - {{day.end_time}}</p>
-                    <div>
+                    <!-- <div>
                         @for(timeSlot of day.time; track timeSlot){
                             <p>{{timeSlot.time}}</p>
                         }
-                    </div>
+                    </div> -->
                 </nz-card>
             } @else {
                 <nz-card style="width:200px; height: 200px;" [ngClass]="weekends.includes(day.dayOfWeek) ? 'weekend' : 'base'" [nzTitle]="day.date.toString()" class="base-card">
