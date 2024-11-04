@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Specialization } from './application.model';
+import { DoctorModel } from '../../shared/data/user.types';
 
 export const Specializations = createAction(
   '[Application] Specializations',
@@ -9,4 +10,9 @@ export const Specializations = createAction(
 export const SelectedSpecialization = createAction(
   '[Application] SelectedSpecialization',
   props<{ selectedSpecialization: Specialization }>()
+);
+
+export const SelectedDoctor = createAction(
+  '[Application] SelectedDoctor',
+  props<{ selectedDoctor: DoctorModel }>()
 );

@@ -1,10 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import { ApplicationState } from './application.model';
-import { SelectedSpecialization, Specializations } from './application.actions';
+import {
+  SelectedDoctor,
+  SelectedSpecialization,
+  Specializations,
+} from './application.actions';
 
 export const initialState: ApplicationState = {
   specializations: [],
   selectedSpecialization: null,
+  selectedDoctor: null,
 };
 
 export const applicationReducer = createReducer(
@@ -12,9 +17,16 @@ export const applicationReducer = createReducer(
   on(Specializations, (state, { specializations }) => ({
     specializations: specializations,
     selectedSpecialization: state.selectedSpecialization,
+    selectedDoctor: state.selectedDoctor,
   })),
   on(SelectedSpecialization, (state, { selectedSpecialization }) => ({
     specializations: state.specializations,
     selectedSpecialization: selectedSpecialization,
+    selectedDoctor: state.selectedDoctor,
+  })),
+  on(SelectedDoctor, (state, { selectedDoctor }) => ({
+    specializations: state.specializations,
+    selectedSpecialization: state.selectedSpecialization,
+    selectedDoctor: selectedDoctor,
   }))
 );

@@ -1,0 +1,11 @@
+<section class="date-modal">
+    <div class="date-modal__container" *ngIf="timeSlots.length > 0">
+        @for(timeSlot of timeSlots; track (timeSlot.id + timeSlot.id_patient + timeSlot.Id_doctor + 32)){
+            @if(timeSlot.id !== 0){
+                <p class="date-modal__private-slot">{{timeSlot.time}}</p>
+            }@else {
+                <button class="date-modal__button">{{timeSlot.time}}:  Записаться</button>
+            }
+        }
+    </div>
+</section>

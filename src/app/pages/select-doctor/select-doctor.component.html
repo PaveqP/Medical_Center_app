@@ -3,7 +3,7 @@
     <div class="select-doctor__container">
         <div class="select-doctor__doctors-list">
             @for(doctor of doctorsList; track doctor.id){
-                <nz-card style="width:300px;" [nzTitle]="doctor.name" class="base-card">
+                <nz-card style="width:300px;" [nzTitle]="doctor.name" class="base-card" (click)="selectDoctor(doctor)">
                     <p>{{doctor.name}}</p>
                     <p>{{doctor.email}}</p>
                     <p>{{doctor.rating}}</p>

@@ -1,0 +1,17 @@
+.date-modal {
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__private-slot{
+        background-color: rgba($color: lightcoral, $alpha: 0.4);
+        padding: 5px;
+    }
+
+    &__button{
+        padding: 5px;
+    }
+}

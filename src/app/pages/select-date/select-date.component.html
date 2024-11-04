@@ -1,1 +1,28 @@
-<p>select-date works!</p>
+<section class="select-date">
+    <div class="select-date__calendar">
+        @for(day of days; track day){            
+            @if(findDayData(day)){
+                <nz-card 
+                    style="width:200px; height: 200px;" 
+                    [ngClass]="weekends.includes(day.dayOfWeek) ? 'weekend' : 'work'" 
+                    [nzTitle]="day.date.toString()" 
+                    class="base-card"
+                    (click)="createDateModal(day)"
+                >
+                    <p>{{day.dayOfWeek}}</p>
+                    <p>{{day.start_time}} - {{day.end_time}}</p>
+                    <div>
+                        @for(timeSlot of day.time; track timeSlot){
+                            <p>{{timeSlot.time}}</p>
+                        }
+                    </div>
+                </nz-card>
+            } @else {
+                <nz-card style="width:200px; height: 200px;" [ngClass]="weekends.includes(day.dayOfWeek) ? 'weekend' : 'base'" [nzTitle]="day.date.toString()" class="base-card">
+                    <p>{{day.dayOfWeek}}</p>
+                </nz-card>
+            }
+            
+        }
+    </div>
+</section>

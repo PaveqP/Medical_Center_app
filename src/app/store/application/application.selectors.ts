@@ -14,3 +14,8 @@ export const selectSelectedSpecialization = createSelector(
   (applicationState: ApplicationState) =>
     applicationState.selectedSpecialization
 );
+
+export const selectSelectedDoctor = createSelector(
+  selectApplication,
+  (applicationState: ApplicationState) => applicationState.selectedDoctor
+);

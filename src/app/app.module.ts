@@ -15,6 +15,8 @@ import { registerLocaleData } from '@angular/common';
 import ru from '@angular/common/locales/ru';
 import { FormsModule } from '@angular/forms';
 import { applicationReducer } from './store/application/application.reducer';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(ru);
 
@@ -28,8 +30,13 @@ registerLocaleData(ru);
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forRoot({ user: userReducer, application: applicationReducer }),
     FormsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient()],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(),
+    NzModalService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
