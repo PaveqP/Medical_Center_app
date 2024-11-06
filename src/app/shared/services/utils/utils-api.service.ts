@@ -20,7 +20,6 @@ export class UtilsApiService {
     private store: Store<AppState>
   ) {
     this.access_token = this.cookieService.get('access_token');
-    console.log(this.access_token);
   }
 
   getSpecializations() {

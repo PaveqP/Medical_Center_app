@@ -1,0 +1,28 @@
+<app-auth-header></app-auth-header>
+<section class="visits-list">
+    <nz-table #sortTable [nzData]="allVisits" nzTableLayout="fixed">
+        <thead>
+          <tr>
+            @for (column of columnNames; track column) {
+            <!-- [nzSortFn]="column.compare" [nzSortPriority]="column.priority" -->
+              <th>
+                {{ column }}
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (data of sortTable.data; track data) {
+            <tr>
+              <td>{{ data.id }}</td>
+              <td>{{ data.date }}</td>
+              <td>{{ data.time }}</td>
+              <td>{{ data.Id_doctor }}</td>
+              <td>{{ data.cost }}</td>
+              <td>{{ data.reason }}</td>
+              <td>{{ data.id_conclusion }}</td>
+            </tr>
+          }
+        </tbody>
+      </nz-table>
+</section>

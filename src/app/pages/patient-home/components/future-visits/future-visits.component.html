@@ -2,10 +2,10 @@
     <h1 class="future-visits__title base-title">Предстоящие визиты</h1>
     <div class="future-visits__visits">
         @for (card of displayedCards; track card) {
-            <nz-card style="width:300px;" [nzTitle]="card" (click)="selectSpecialization(card)" class="base-card">
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
+            <nz-card style="width:300px;" [nzTitle]="card.date" class="base-card">
+                <p>{{card.date}}, {{card.time}}</p>
+                <p>{{card.cost}}</p>
+                <p>{{card.reason}}</p>
             </nz-card>
         }
         <app-visit-actions></app-visit-actions>
@@ -13,7 +13,7 @@
     <div class="future-visits__actions">
         <nz-pagination 
             [(nzPageIndex)]="currentPage" 
-            [nzTotal]="visits.length"
+            [nzTotal]="visits?.length"
             [nzPageSize]="pageSize"
             (nzPageIndexChange)="onPageChange($event)"
         ></nz-pagination>
