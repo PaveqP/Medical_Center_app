@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PatientHomeUiService } from '../../services/patient-home-ui.service';
-import { IPatientVisitsResponse } from '../../data/patient.types';
+import { IVisitsResponse } from '../../data/patient.types';
 
 @Component({
   selector: 'app-future-visits',
@@ -10,9 +10,9 @@ import { IPatientVisitsResponse } from '../../data/patient.types';
 export class FutureVisitsComponent {
   constructor(private readonly uiService: PatientHomeUiService) {}
 
-  protected visits: IPatientVisitsResponse[] | null = [];
+  protected visits: IVisitsResponse[] | null = [];
 
-  displayedCards: IPatientVisitsResponse[] = [];
+  displayedCards: IVisitsResponse[] = [];
   currentPage = 1;
   pageSize = 6;
   selected_specialization: string | null = null;

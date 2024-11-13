@@ -1,0 +1,29 @@
+<app-auth-header></app-auth-header>
+<section class="consultation">
+    <div class="consultation__sctructure">
+        <h1 class="consultation__title base-title">Консультация №{{consultationInfo?.id}}</h1>
+        <div class="consultation__info">
+            <div class="info__patient">
+                <h2 class="base-subtitle">Пациент: </h2>
+                <p>ФИО: {{patientInfo?.surname}} {{patientInfo?.name}} {{patientInfo?.middle_name}}</p>
+                <p>Возраст: {{patientInfo?.age}}</p>
+                <p>Пол: {{patientInfo?.gender}}</p>
+            </div>
+            <div class="info__appeal">
+                <h2 class="base-subtitle">Обращение: </h2>
+                <p>Причина обращения: {{consultationInfo?.reason}}</p>
+            </div>
+        </div>
+        <div class="consultation__actions" [formGroup]="consultationForm">
+            <div class="consultation__diagnosis">
+                <h2 class="base-subtitle">Диагноз: </h2>
+                <textarea name="diagnosis" id="" rows="10" class="consultation-area" formControlName="diagnosis"></textarea>
+            </div>
+            <div class="consultation__conclusion">
+                <h2 class="base-subtitle">Рекомендации: </h2>
+                <textarea name="conclusion" id="" rows="10" class="consultation-area" formControlName="recommendations"></textarea>
+            </div>
+            <button class="base-button" type="submit" (click)="submitConsultation()">Сделать заключение и завершить приём</button>
+        </div>
+    </div>
+</section>

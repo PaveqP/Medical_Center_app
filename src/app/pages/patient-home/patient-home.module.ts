@@ -9,6 +9,7 @@ import { PastVisitsComponent } from './components/past-visits/past-visits.compon
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { VisitActionsComponent } from './ui/visit-actions/visit-actions.component';
+import { SharedPipesModule } from '../../shared/pipes/shared-pipes.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { VisitActionsComponent } from './ui/visit-actions/visit-actions.componen
     AuthHeaderComponent,
     NzCardModule,
     NzPaginationModule,
+    SharedPipesModule,
   ],
 })
 export class PatientHomeModule {}

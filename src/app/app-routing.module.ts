@@ -34,6 +34,11 @@ const routes: Routes = [
       ),
     canActivate: [canActivateStuff],
   },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

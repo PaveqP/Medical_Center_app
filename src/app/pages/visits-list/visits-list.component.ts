@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PatientHomeUiService } from '../patient-home/services/patient-home-ui.service';
-import { IPatientVisitsResponse } from '../patient-home/data/patient.types';
+import { IVisitsResponse } from '../patient-home/data/patient.types';
 
 @Component({
   selector: 'app-visits-list',
@@ -8,7 +8,7 @@ import { IPatientVisitsResponse } from '../patient-home/data/patient.types';
   styleUrl: './visits-list.component.scss',
 })
 export class VisitsListComponent {
-  protected allVisits: IPatientVisitsResponse[] = [];
+  protected allVisits: IVisitsResponse[] = [];
   protected columnNames: string[] = [
     'id',
     'Дата',

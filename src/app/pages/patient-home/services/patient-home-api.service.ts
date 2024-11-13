@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { IPatientVisitsResponse } from '../data/patient.types';
+import { IVisitsResponse } from '../data/patient.types';
 import { catchError, of, tap } from 'rxjs';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class PatientHomeApiService {
 
   getPatientAllVisits() {
     return this.httpClient
-      .get<IPatientVisitsResponse[]>(`${this.baseUrl}`, {
+      .get<IVisitsResponse[]>(`${this.baseUrl}`, {
         headers: { Authorization: `bearer ${this.access_token}` },
       })
       .pipe(
@@ -33,7 +33,7 @@ export class PatientHomeApiService {
 
   getPatientPastVisits() {
     return this.httpClient
-      .get<IPatientVisitsResponse[]>(`${this.baseUrl}/past`, {
+      .get<IVisitsResponse[]>(`${this.baseUrl}/past`, {
         headers: { Authorization: `bearer ${this.access_token}` },
       })
       .pipe(
@@ -46,7 +46,7 @@ export class PatientHomeApiService {
 
   getPatientFutureVisits() {
     return this.httpClient
-      .get<IPatientVisitsResponse[]>(`${this.baseUrl}/future`, {
+      .get<IVisitsResponse[]>(`${this.baseUrl}/future`, {
         headers: { Authorization: `bearer ${this.access_token}` },
       })
       .pipe(

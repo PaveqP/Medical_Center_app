@@ -1,7 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { DoctorsResponse, PayloadSpecialization } from '../../data/user.types';
+import {
+  DoctorsResponse,
+  IPatientPolicy,
+  IPolicyData,
+  PayloadSpecialization,
+} from '../../data/user.types';
 import { catchError, of } from 'rxjs';
 
 @Injectable({
@@ -29,6 +34,32 @@ export class UserApiService {
       .pipe(
         catchError((error) => {
           console.error('Error fetching data', error);
+          return of(null);
+        })
+      );
+  }
+
+  getPatientPolicy() {
+    return this.httpClient
+      .get<IPatientPolicy>(`${this.baseUrl}patient/policy`, {
+        headers: { Authorization: `bearer ${this.access_token}` },
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching data', error);
+          return of(null);
+        })
+      );
+  }
+
+  setPatientPolicy(policyData: IPolicyData) {
+    return this.httpClient
+      .post(`${this.baseUrl}patient/policy`, policyData, {
+        headers: { Authorization: `bearer ${this.access_token}` },
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error publish data', error);
           return of(null);
         })
       );

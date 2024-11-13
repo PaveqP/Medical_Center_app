@@ -5,7 +5,7 @@
             <nz-card style="width:300px;" [nzTitle]="card.date" class="base-card">
                 <p>{{card.date}}, {{card.time}}</p>
                 <p>{{card.cost}}</p>
-                <p>{{card.reason}}</p>
+                <p>{{card.reason | textCut}}</p>
             </nz-card>
         }
         <app-visit-actions></app-visit-actions>

@@ -1,0 +1,25 @@
+<section class="past-visits">
+    <h1 class="past-visits__title base-title">Последние консультации</h1>
+    <div class="past-visits__visits">
+        @for (card of displayedCards; track card) {
+            <nz-card style="width:300px;" [nzTitle]="card.date" class="base-card">
+                <p>{{card.date}}, {{card.time}}</p>
+                <p>{{card.cost}}</p>
+                <p>{{card.reason | textCut}}</p>
+                @if (card.id_conclusion) {
+                    <div nzTooltipTitle="Заключение сделано" nz-tooltip></div>
+                }
+            </nz-card>
+        }
+        <!-- <app-visit-actions></app-visit-actions> -->
+    </div>
+    <div class="past-visits__actions">
+        <nz-pagination 
+            [(nzPageIndex)]="currentPage" 
+            [nzTotal]="consultations?.length"
+            [nzPageSize]="pageSize"
+            (nzPageIndexChange)="onPageChange($event)"
+        ></nz-pagination>
+    </div>
+</section>
+

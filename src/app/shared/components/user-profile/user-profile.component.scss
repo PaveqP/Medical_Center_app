@@ -1,0 +1,35 @@
+.date-modal {
+}
+.base-subtitle {
+}
+
+.modal__structure{
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-modal__container {
+    max-width: 250px;
+    margin-top: 20px;
+}
+.date-modal__actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.policy__form{
+    border: 2px solid var(--font_color);
+    border-radius: 5px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    input{
+        border: 1px solid var(--font_color);
+        border-radius: 5px;
+        padding: 2px;
+    }
+}

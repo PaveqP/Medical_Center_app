@@ -1,0 +1,51 @@
+<section class="date-modal">
+    <div class="modal__structure">
+        @if(userRole === 'patient'){
+            <div class="date-modal__container">
+                <h1 class="base-subtitle">Ваши данные</h1>
+                <p>Имя: {{userData.name}}</p>
+                <p>Фамилия: {{userData.surname}}</p>
+                <p>Отчество: {{userData.middle_name}}</p>
+                <p>Пол: {{userData.gender}}</p>
+                <p>Email: {{userData.email}}</p>
+                <p>Баланс: {{userData.balance}}</p>
+            </div>
+        } @else {
+            <div class="date-modal__container">
+                <h1 class="base-subtitle">Ваши данные</h1>
+                <p>Имя: {{userData.name}}</p>
+                <p>Фамилия: {{userData.surname}}</p>
+                <p>Отчество: {{userData.middle_name}}</p>
+                <p>Email: {{userData.email}}</p>
+            </div>
+        }
+        @if(userRole === 'patient'){
+            <div class="date-modal__container">
+                <h1 class="base-subtitle">Медицинский полис</h1>
+                @if (policy$ | async) {
+                    <p>Номер: {{(policy$ | async)?.number}}</p>
+                    <p>Дата окончания: {{(policy$ | async)?.end_date | dateFormat}}</p>
+                } @else{
+                    <form [formGroup]="policyForm" class="policy__form">
+                    <p>Данные полиса не найдены. Вы можете указать данные полиса</p>
+                    <div class="policy__number">
+                        Номер полиса: 
+                        <input type="text" formControlName="number">
+                    </div>
+                    <div class="policy__date">
+                        Дата окончания: 
+                        <input type="date" formControlName="expiredDate">
+                    </div>
+                    <button class="base-button" (click)="setPatientPolicy()">Сохранить данные полиса</button>
+                    </form>
+                }
+            </div>
+        }
+    </div>
+    <div class="date-modal__actions">
+        <button nz-button nzType="default" (click)="closeModal()">Закрыть</button>
+
+        <button nz-button nzType="primary"  (click)="logoutUser()">Выйти из аккаунта</button>
+    </div>
+</section>
+

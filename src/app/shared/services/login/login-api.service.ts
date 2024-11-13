@@ -32,6 +32,7 @@ export class LoginApiService {
   }
 
   patientLogin(data: AuthRequestType) {
+    this.cookieService.deleteAll();
     return this.httpClient
       .post<AuthResponse>(`${this.baseApiUrl}login`, data)
       .pipe(
@@ -48,6 +49,7 @@ export class LoginApiService {
   }
 
   doctorLogin(data: AuthRequestType) {
+    this.cookieService.deleteAll();
     return this.httpClient
       .post<AuthResponse>(`${this.baseApiUrl}stuff/login`, data)
       .pipe(
@@ -105,12 +107,19 @@ export class LoginApiService {
       );
   }
 
+  logoutUser() {
+    this.cookieService.deleteAll();
+    this.router.navigate(['']);
+    window.location.reload();
+  }
+
   private saveTokensToCookie(res: AuthResponse, role: 'doctor' | 'patient') {
     this.access_token = res.accessToken;
     this.refresh_token = res.refreshToken;
 
-    this.cookieService.deleteAll();
+    this.cookieService.delete('access_token');
     this.cookieService.set('access_token', this.access_token);
+    this.cookieService.delete('refresh_token');
     this.cookieService.set('refresh_token', this.refresh_token);
     this.cookieService.set('current_role', role);
   }

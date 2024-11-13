@@ -18,4 +18,16 @@ export interface DoctorModel {
   department: string;
 }
 
+export interface IPatientPolicy {
+  id: number;
+  id_patient: number;
+  number: number;
+  end_date: string;
+}
+
+export interface IPolicyData {
+  number: string;
+  expired_date: string;
+}
+
 export type DoctorsResponse = DoctorModel[];

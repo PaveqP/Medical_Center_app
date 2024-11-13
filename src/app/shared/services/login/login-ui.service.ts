@@ -20,6 +20,10 @@ export class LoginUiService {
     return this.apiService.loadUserData();
   }
 
+  logoutUser() {
+    this.apiService.logoutUser();
+  }
+
   get isUserAuth() {
     return this.apiService.isUserAuth;
   }

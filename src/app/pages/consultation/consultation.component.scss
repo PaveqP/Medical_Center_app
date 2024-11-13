@@ -1,0 +1,52 @@
+.consultation{
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__info{
+        max-width: 800px;
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    &__actions{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.info {
+
+    &__patient{
+        border: 2px solid var(--font_color);
+        border-radius: 5px;
+        padding: 20px 40px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__appeal{
+        border: 2px solid var(--font_color);
+        border-radius: 5px;
+        padding: 20px 40px;
+    }
+}
+
+.consultation-area{
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid var(--font_color);
+    border-radius: 10px;
+}
+
+.consultation__diagnosis {
+    
+}
+.consultation__conclusion {
+}

@@ -19,3 +19,8 @@ export const selectSelectedDoctor = createSelector(
   selectApplication,
   (applicationState: ApplicationState) => applicationState.selectedDoctor
 );
+
+export const selectSelectedConsultation = createSelector(
+  selectApplication,
+  (applicationState: ApplicationState) => applicationState.selectedConsultation
+);

@@ -1,10 +1,16 @@
 .patient-details{
     padding: 40px;
     height: 400px;
+    max-width: 1200px;
 
     &__detail-card{
         height: 100%;
         display: flex;
+        gap: 20px;
+        border: 2px solid var(--font_color);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 40px;
     }
 }
 
@@ -15,4 +21,10 @@
 
     &__reason {
     }
+}
+
+.reason__input{
+    border: 1px solid var(--font_color);
+    border-radius: 5px;
+    padding: 10px;
 }

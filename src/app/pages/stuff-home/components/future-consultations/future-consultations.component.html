@@ -1,0 +1,38 @@
+<section class="future-visits">
+    <h1 class="future-visits__title base-title">Предстоящие консультации</h1>
+    <div class="future-visits__visits">
+        @for (card of displayedCards; track card) {
+            <nz-card 
+                style="width:300px; max-height: 400px;" 
+                [nzTitle]="card.date" 
+                class="base-card future-visits__card" 
+                (click)="selectConsultation(card)"
+            >
+                <div class="card-content">
+                    <div>
+                        <p>{{card.date}}, {{card.time}}</p>
+                        <p>{{card.cost}}</p>
+                        <p>{{card.reason | textCut}}</p>
+                    </div>
+                    @if (card.id_conclusion) {
+                        <div class="consultation-conclusion"> Заключение сделано </div>
+                    }
+                </div>
+            </nz-card>
+        }
+        <!-- <app-visit-actions></app-visit-actions> -->
+    </div>
+    <div class="future-visits__actions">
+        @if(selected_consultation){
+            <button class="base-button" routerLink="consultation">Перейти к консультации {{selected_consultation.date}} {{selected_consultation.time}}</button>
+        } @else {
+            <button nz-button class="base-button" disabled>Выберите консультацию</button>
+        }
+        <nz-pagination 
+            [(nzPageIndex)]="currentPage" 
+            [nzTotal]="consultations?.length"
+            [nzPageSize]="pageSize"
+            (nzPageIndexChange)="onPageChange($event)"
+        ></nz-pagination>
+    </div>
+</section>
