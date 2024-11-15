@@ -11,6 +11,8 @@ import {
 import { map } from 'rxjs';
 import { PatientDetailsUiService } from './services/patient-details-ui.service';
 import { IConsultation } from './data/consultation.types';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-confirm',
@@ -24,9 +26,14 @@ export class PatientDetailsComponent {
   protected date: string | null = null;
   protected time: string | null = null;
 
+  protected patientReasonForm = new FormGroup({
+    reason: new FormControl('', Validators.required),
+  });
+
   constructor(
     private readonly store: Store<AppState>,
-    private readonly uiService: PatientDetailsUiService
+    private readonly uiService: PatientDetailsUiService,
+    private readonly router: Router
   ) {
     this.loadUserData();
     this.loadSpecialization();
@@ -80,13 +87,19 @@ export class PatientDetailsComponent {
   }
 
   publishConsultation() {
-    const data: IConsultation = {
-      date: this.date,
-      time: this.time,
-      id_doctor: this.doctor!.id,
-      cost: 100,
-      reason: 'test test test',
-    };
-    this.uiService.createConsultation(data).subscribe();
+    if (this.patientReasonForm.value.reason) {
+      const data: IConsultation = {
+        date: this.date,
+        time: this.time,
+        id_doctor: this.doctor!.id,
+        cost: 100,
+        reason: this.patientReasonForm.value.reason,
+      };
+      this.uiService.createConsultation(data).subscribe((resp) => {
+        if (resp) {
+          this.router.navigate(['/home']);
+        }
+      });
+    }
   }
 }

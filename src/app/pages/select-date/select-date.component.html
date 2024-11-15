@@ -9,12 +9,12 @@
                 <nz-card 
                     style="width:200px; height: 200px;" 
                     [ngClass]="weekends.includes(day.dayOfWeek) ? 'weekend' : 'work'" 
-                    [nzTitle]="day.date.toString()" 
+                    [nzTitle]="day.fulldate.toString() | dateFormat" 
                     class="base-card"
                     (click)="createDateModal(day)"
                 >
                     <p>{{day.dayOfWeek}}</p>
-                    <p>{{day.start_time}} - {{day.end_time}}</p>
+                    <p>{{day.start_time | timeFormat}} - {{day.end_time | timeFormat}}</p>
                     <!-- <div>
                         @for(timeSlot of day.time; track timeSlot){
                             <p>{{timeSlot.time}}</p>
@@ -22,7 +22,7 @@
                     </div> -->
                 </nz-card>
             } @else {
-                <nz-card style="width:200px; height: 200px;" [ngClass]="weekends.includes(day.dayOfWeek) ? 'weekend' : 'base'" [nzTitle]="day.date.toString()" class="base-card">
+                <nz-card style="width:200px; height: 200px;" [ngClass]="weekends.includes(day.dayOfWeek) ? 'weekend' : 'base'" [nzTitle]="day.fulldate.toString() | dateFormat" class="base-card">
                     <p>{{day.dayOfWeek}}</p>
                 </nz-card>
             }

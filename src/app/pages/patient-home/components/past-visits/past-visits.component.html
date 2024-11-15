@@ -2,10 +2,18 @@
     <h1 class="past-visits__title base-title">Последние визиты</h1>
     <div class="past-visits__visits">
         @for (card of displayedCards; track card) {
-            <nz-card style="width:300px;" [nzTitle]="card.date" class="base-card">
-                <p>{{card.date}}, {{card.time}}</p>
-                <p>{{card.cost}}</p>
-                <p>{{card.reason | textCut}}</p>
+            <nz-card style="width:300px; max-height: 400px;" [nzTitle]="card.date | dateFormat" class="base-card">
+                <div class="card-content">
+                    <div>
+                        <p>{{card.date | dateFormat}}, {{card.time | timeFormat}}</p>
+                        <p>{{card.cost}}</p>
+                        <p>{{card.reason | textCut}}</p>
+                    </div>
+
+                    @if (card.id_conclusion) {
+                        <div class="consultation-conclusion"> Заключение сделано </div>
+                    }
+                </div>
             </nz-card>
         }
         <app-visit-actions></app-visit-actions>

@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, of, tap } from 'rxjs';
-import { Specialization } from '../../../store/application/application.model';
+import {
+  IConclusion,
+  Specialization,
+} from '../../../store/application/application.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/app.state';
 import { Specializations } from '../../../store/application/application.actions';
@@ -33,6 +36,19 @@ export class UtilsApiService {
         }),
         catchError((error) => {
           console.error('Error fetching user data', error);
+          return of(null);
+        })
+      );
+  }
+
+  getConclusionById(id: number) {
+    return this.httpClient
+      .get<IConclusion>(`${this.baseUrl}conclusion/${id}`, {
+        headers: { Authorization: `bearer ${this.access_token}` },
+      })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching conclusion data', error);
           return of(null);
         })
       );

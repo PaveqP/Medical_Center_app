@@ -36,6 +36,8 @@ export class DateModalComponent {
     const endTime = Number(this.modalData.end_time?.split(':')[0]);
     const startTime = Number(this.modalData.start_time?.split(':')[0]);
 
+    console.log(this.modalData);
+
     for (let i = startTime; i < endTime; i++) {
       const findTime = this.modalData.time?.find(
         (slot) => slot.time.split(':')[0] === i.toString()

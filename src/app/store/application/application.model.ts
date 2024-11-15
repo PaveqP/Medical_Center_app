@@ -6,6 +6,12 @@ export interface Specialization {
   name: string;
 }
 
+export interface IConclusion {
+  id: number;
+  diagnosis: string;
+  recomendations: string;
+}
+
 export interface ApplicationState {
   specializations: Specialization[];
   selectedSpecialization: Specialization | null;

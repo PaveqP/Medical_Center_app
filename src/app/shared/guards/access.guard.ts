@@ -12,7 +12,7 @@ export const canActivateHome = () => {
   const loginUiService = inject(LoginUiService);
 
   if (!loginUiService.isUserAuth) {
-    return router.createUrlTree(['/login']);
+    return router.navigate(['/login']);
   }
 
   return store.select(selectUserRole).pipe(
@@ -20,7 +20,7 @@ export const canActivateHome = () => {
     take(1),
     map((role) => {
       if (role === 'patient') return true;
-      return router.createUrlTree(['/login']);
+      return router.navigate(['/login']);
     })
   );
 };
@@ -31,7 +31,7 @@ export const canActivateStuff = () => {
   const loginUiService = inject(LoginUiService);
 
   if (!loginUiService.isUserAuth) {
-    return router.createUrlTree(['/login']);
+    return router.navigate(['/login']);
   }
 
   return store.select(selectUserRole).pipe(
@@ -39,7 +39,7 @@ export const canActivateStuff = () => {
     take(1),
     map((role) => {
       if (role === 'doctor') return true;
-      return router.createUrlTree(['/login']);
+      return router.navigate(['/login']);
     })
   );
 };

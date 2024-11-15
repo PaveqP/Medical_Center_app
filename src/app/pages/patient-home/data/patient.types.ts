@@ -1,3 +1,5 @@
+import { IConclusion } from '../../../store/application/application.model';
+
 export interface IVisitsResponse {
   id: number;
   date: string;
@@ -7,6 +9,7 @@ export interface IVisitsResponse {
   cost: string;
   reason: string;
   id_conclusion: null | number;
+  conclusion?: IConclusion;
 }
 
 export interface IPatient {

@@ -4,6 +4,7 @@ import {
   canActivateHome,
   canActivateStuff,
 } from './shared/guards/access.guard';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 

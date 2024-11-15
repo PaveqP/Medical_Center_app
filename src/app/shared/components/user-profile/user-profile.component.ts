@@ -16,6 +16,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { SharedPipesModule } from '../../pipes/shared-pipes.module';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,7 +25,7 @@ import { CookieService } from 'ngx-cookie-service';
   imports: [
     NzButtonModule,
     CommonModule,
-    DateFormatPipe,
+    SharedPipesModule,
     ReactiveFormsModule,
     FormsModule,
   ],

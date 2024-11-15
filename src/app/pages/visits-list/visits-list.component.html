@@ -15,12 +15,22 @@
           @for (data of sortTable.data; track data) {
             <tr>
               <td>{{ data.id }}</td>
-              <td>{{ data.date }}</td>
-              <td>{{ data.time }}</td>
+              <td>{{ data.date | dateFormat}}</td>
+              <td>{{ data.time | timeFormat}}</td>
               <td>{{ data.Id_doctor }}</td>
               <td>{{ data.cost }}</td>
               <td>{{ data.reason }}</td>
-              <td>{{ data.id_conclusion }}</td>
+              <td>
+                @if(data.id_conclusion){
+                  <div class="diagnosis">
+                    <p>Диагноз: {{data.conclusion?.diagnosis}}</p>
+                  </div>
+                  <div class="recommendations">
+                    <p>Рекомендации:</p>
+                    {{data.conclusion?.recomendations}}
+                  </div>
+                }
+              </td>
             </tr>
           }
         </tbody>

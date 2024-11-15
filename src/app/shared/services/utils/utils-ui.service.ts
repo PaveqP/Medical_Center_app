@@ -10,4 +10,8 @@ export class UtilsUiService {
   getSpecializations() {
     return this.apiService.getSpecializations();
   }
+
+  getConclusionById(id: number) {
+    return this.apiService.getConclusionById(id);
+  }
 }

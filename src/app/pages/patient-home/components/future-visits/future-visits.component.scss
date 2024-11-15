@@ -12,3 +12,17 @@
     display: flex;
     gap: 10px;
 }
+
+.consultation-conclusion{
+    margin-top: auto;
+    background-color: lightgreen;
+    padding: 5px 10px;
+}
+
+.card-content{
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}

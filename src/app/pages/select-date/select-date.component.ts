@@ -43,24 +43,24 @@ export class SelectDateComponent {
   }
 
   createCalendar() {
-    const daysInCurrentMonth = new Date(
-      this.currentYear as number,
-      (this.currentMonth as number) + 1,
-      0
-    ).getDate();
+    const startDate = new Date();
+    const daysInFuture = 30;
 
-    for (let day = 1; day <= daysInCurrentMonth; day++) {
-      const date = new Date(
-        this.currentYear as number,
-        this.currentMonth as number,
-        day
-      );
+    this.days = [];
+
+    for (let i = 0; i < daysInFuture; i++) {
+      const date = new Date(startDate);
+      date.setDate(startDate.getDate() + i);
+
+      const day = date.getDate();
       const dayOfWeek = date.toLocaleDateString('ru-RU', { weekday: 'long' });
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
 
       this.days.push({
         date: day,
         dayOfWeek,
-        fulldate: `${this.currentYear}-${(this.currentMonth as number) + 1}-${
+        fulldate: `${year}-${month < 10 ? '0' + month : month}-${
           day < 10 ? '0' + day : day
         }`,
       });
@@ -104,11 +104,8 @@ export class SelectDateComponent {
             tap((consultations) => {
               console.log(consultations);
               this.days = this.days.map((day) => {
-                const fullDate = `${this.currentYear}-${
-                  (this.currentMonth as number) + 1
-                }-${day.date < 10 ? '0' + day.date : day.date}`;
                 const findDay = consultations?.filter(
-                  (consultation) => consultation.date === fullDate
+                  (consultation) => consultation.date === day.fulldate
                 );
                 if (findDay && findDay.length > 0) {
                   return { ...day, time: findDay };
@@ -117,9 +114,7 @@ export class SelectDateComponent {
               });
             })
           )
-          .subscribe((val) => {
-            console.log(this.days);
-          });
+          .subscribe();
       });
   }
 

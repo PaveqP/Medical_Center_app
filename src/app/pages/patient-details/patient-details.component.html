@@ -9,13 +9,13 @@
             <p>ФИО пациента: {{userData?.surname}} {{userData?.name}} {{userData?.middle_name}}</p>
             <p>Направление: {{specialization?.name}}</p>
             <p>Врач: {{doctor?.surname}} {{doctor?.name}} {{doctor?.middle_name}}</p>
-            <p>Дата: {{date}}</p>
-            <p>Время: {{time}}</p>
+            <p>Дата: {{date | dateFormat}}</p>
+            <p>Время: {{time | timeFormat}}</p>
         </div>
         <div class="vertical-separator"></div>
-        <div class="detail-card__reason">
+        <div class="detail-card__reason" [formGroup]="patientReasonForm">
             <h2 class="base-subtitle">Укажите причину обращения</h2>
-            <textarea name="reason" id="0" cols="100" rows="10" class="reason__input"></textarea>
+            <textarea name="reason" id="0" cols="100" rows="10" class="reason__input" formControlName="reason"></textarea>
         </div>
     </div>
     <button class="base-button" (click)="publishConsultation()">Записаться</button>

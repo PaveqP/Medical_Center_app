@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { applicationReducer } from './store/application/application.reducer';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 registerLocaleData(ru);
 
@@ -31,6 +32,7 @@ registerLocaleData(ru);
     StoreModule.forRoot({ user: userReducer, application: applicationReducer }),
     FormsModule,
     BrowserAnimationsModule,
+    PageNotFoundComponent,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
